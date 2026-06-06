@@ -1,4 +1,4 @@
-name: Validate Links
+name: Markdown Lint
 
 on:
   push:
@@ -7,18 +7,11 @@ on:
     branches: [ main, master ]
 
 jobs:
-  markdown-lint:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Lint Markdown
         uses: DavidAnson/markdownlint-cli2-action@v16
         with:
           globs: '**/*.md'
-          config: |
-            {
-              "MD013": false,
-              "MD033": false,
-              "MD041": false
-            }
